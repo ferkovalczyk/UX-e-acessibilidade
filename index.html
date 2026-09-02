@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segurança Digital para a Terceira Idade</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilos de acessibilidade e foco visual */
+        :root {
+            --font-scale: 1;
+        }
+
+        html {
+            font-size: calc(16px * var(--font-scale));
+        }
+
+        /* Foco bem visível para navegação por teclado */
+        button:focus, a:focus, input:focus {
+            outline: 4px solid #FBBF24 !important;
+            outline-offset: 3px !important;
+        }
+
+        .alto-contraste {
+            background-color: #000000 !important;
+            color: #FFFF00 !important;
+        }
+
+        .alto-contraste .card-bg {
+            background-color: #1A1A1A !important;
+            border-color: #FFFF00 !important;
+            color: #FFFFFF !important;
+        }
+
+        .alto-contraste button {
+            background-color: #FFFF00 !important;
+            color: #000000 !important;
+            border: 2px solid #FFFFFF !important;
+            font-weight: bold !important;
+        }
+
+        .alto-contraste .accent-text {
+            color: #FFFF00 !important;
+        }
+    </style>
+</head>
+<body class="bg-blue-50 text-slate-900 font-sans min-h-screen flex flex-col transition-colors duration-200">
+
+    <!-- Barra Superior de Acessibilidade -->
+    <header class="bg-blue-900 text-white p-4 shadow-md sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto flex flex-wrap justify-between items-center gap-3">
+            <h1 class="text-xl sm:text-2xl font-bold flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+                Guia Amigo Digital
+            </h1>
+            
+            <!-- Controles de Acessibilidade -->
+            <div class="flex flex-wrap items-center gap-2">
+                <button onclick="alterarFonte(0.1)" class="bg-blue-800 hover:bg-blue-700 text-white px-3 py-2 rounded-lg font-bold border-2 border-white text-base flex items-center gap-1" title="Aumentar tamanho do texto" aria-label="Aumentar tamanho do texto">
+                    A+
+                </button>
+                <button onclick="alterarFonte(-0.1)" class="bg-blue-800 hover:bg-blue-700 text-white px-3 py-2 rounded-lg font-bold border-2 border-white text-base flex items-center gap-1" title="Diminuir tamanho do texto" aria-label="Diminuir tamanho do texto">
+                    A-
+                </button>
+                <button onclick="alternarAltoContraste()" class="bg-yellow-400 hover:bg-yellow-300 text-blue-950 px-3 py-2 rounded-lg font-bold border-2 border-black text-base flex items-center gap-1" title="Alternar modo de Alto Contraste">
+                    <span>👁️</span> Alto Contraste
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal reorganizado -->
+    <main class="max-w-4xl mx-auto p-4 sm:p-6 flex-grow w-full space-y-8">
+
+        <!-- 1. SEÇÃO INÍCIO: Banner com botão funcional -->
+        <section id="inicio" class="card-bg bg-gradient-to-br from-blue-900 to-indigo-800 text-white p-6 sm:p-8 rounded-3xl shadow-xl border-4 border-blue-300 text-center space-y-5">
+            <span class="inline-block bg-yellow-400 text-blue-950 font-extrabold px-4 py-1 rounded-full text-base sm:text-lg shadow">
+                👋 Bem-vindo(a) ao seu Guia Amigo
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-wide leading-tight">
+                Sua Internet Mais Segura e Sem Segredos
+            </h2>
+            <p class="text-xl sm:text-2xl font-medium max-w-2xl mx-auto text-blue-100">
+                Aprenda a usar o celular com autonomia, protegendo seus dados e identificando armadilhas de forma simples.
+            </p>
+            <div class="pt-2 flex flex-wrap justify-center gap-4">
+                <button onclick="iniciarGuia()" class="bg-yellow-400 hover:bg-yellow-300 text-blue-950 font-black py-4 px-8 rounded-2xl text-xl sm:text-2xl shadow-lg border-2 border-black hover:scale-105 transition-transform flex items-center gap-3">
+                    🚀 Começar Agora (Explorar Dicas)
+                </button>
+                <button onclick="lerTexto('Bem-vindo ao seu Guia Amigo. Aprenda a usar o celular com autonomia, protegendo seus dados e identificando armadilhas digitais de forma simples. Clique em Começar Agora para ver as dicas.')" class="bg-blue-700 hover:bg-blue-600 text-white font-bold py-4 px-6 rounded-2xl text-lg sm:text-xl border-2 border-white flex items-center gap-2">
+                    🔊 Ouvir Apresentação
+                </button>
+            </div>
+        </section>
+
+        <!-- 2. SEÇÃO DICAS IMPORTANTES: 3 dicas curtas e simples -->
+        <section id="dicas" class="card-bg bg-white p-6 sm:p-8 rounded-3xl shadow-lg border-2 border-blue-200 space-y-6">
+            <div class="flex items-center gap-3 border-b-2 border-blue-100 pb-4">
+                <span class="text-4xl">💡</span>
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-blue-900 accent-text">
+                        Dicas Importantes
+                    </h2>
+                    <p class="text-lg text-slate-600">3 passos fundamentais para sua educação digital</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Dica 1 -->
+                <article class="card-bg bg-blue-50 p-5 rounded-2xl border-2 border-blue-300 space-y-3 flex flex-col justify-between">
+                    <div>
+                        <div class="text-3xl mb-2">🐢</div>
+                        <h3 class="text-xl font-bold text-blue-950 accent-text">1. Navegue Sem Pressa</h3>
+                        <p class="text-lg mt-2 leading-relaxed">
+                            A pressa é a maior aliada dos golpistas. Leia tudo com atenção e nunca tome decisões sob pressão.
+                        </p>
+                    </div>
+                    <button onclick="lerTexto('Dica 1: Navegue Sem Pressa. A pressa é a maior aliada dos golpistas. Leia tudo com atenção e nunca tome decisões sob pressão.')" class="mt-4 bg-blue-800 hover:bg-blue-900 text-white font-bold py-2 px-3 rounded-xl text-base flex items-center justify-center gap-2">
+                        🔊 Ouvir
+                    </button>
+                </article>
+
+                <!-- Dica 2 -->
+                <article class="card-bg bg-green-50 p-5 rounded-2xl border-2 border-green-300 space-y-3 flex flex-col justify-between">
+                    <div>
+                        <div class="text-3xl mb-2">🔐</div>
+                        <h3 class="text-xl font-bold text-green-950 accent-text">2. Guarde Suas Senhas</h3>
+                        <p class="text-lg mt-2 leading-relaxed">
+                            Sua senha é como a chave da sua casa. Nunca passe para estranhos, nem por telefone ou mensagem.
+                        </p>
+                    </div>
+                    <button onclick="lerTexto('Dica 2: Guarde Suas Senhas. Sua senha é como a chave da sua casa. Nunca passe para estranhos, nem por telefone ou mensagem.')" class="mt-4 bg-green-800 hover:bg-green-900 text-white font-bold py-2 px-3 rounded-xl text-base flex items-center justify-center gap-2">
+                        🔊 Ouvir
+                    </button>
+                </article>
+
+                <!-- Dica 3 -->
+                <article class="card-bg bg-amber-50 p-5 rounded-2xl border-2 border-amber-300 space-y-3 flex flex-col justify-between">
+                    <div>
+                        <div class="text-3xl mb-2">🤝</div>
+                        <h3 class="text-xl font-bold text-amber-950 accent-text">3. Peça Ajuda de Confiança</h3>
+                        <p class="text-lg mt-2 leading-relaxed">
+                            Se ficar na dúvida sobre alguma mensagem ou cobrança, consulte um parente ou amigo antes de clicar.
+                        </p>
+                    </div>
+                    <button onclick="lerTexto('Dica 3: Peça Ajuda de Confiança. Se ficar na dúvida sobre alguma mensagem ou cobrança, consulte um parente ou amigo de confiança antes de clicar.')" class="mt-4 bg-amber-800 hover:bg-amber-900 text-white font-bold py-2 px-3 rounded-xl text-base flex items-center justify-center gap-2">
+                        🔊 Ouvir
+                    </button>
+                </article>
+            </div>
+        </section>
+
+        <!-- 3. SEÇÃO DIREITOS NA INTERNET: Texto explicativo -->
+        <section id="direitos" class="card-bg bg-white p-6 sm:p-8 rounded-3xl shadow-lg border-2 border-indigo-200 space-y-6">
+            <div class="flex items-center gap-3 border-b-2 border-indigo-100 pb-4">
+                <span class="text-4xl">⚖️</span>
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-indigo-950 accent-text">
+                        Seus Direitos na Internet
+                    </h2>
+                    <p class="text-lg text-slate-600">A lei protege você também no mundo digital</p>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-lg sm:text-xl leading-relaxed text-slate-800">
+                <p>
+                    Assim como no dia a dia, você possui <strong>direitos garantidos por lei</strong> ao utilizar o celular, redes sociais e serviços bancários na internet:
+                </p>
+
+                <ul class="space-y-3 list-disc pl-6">
+                    <li>
+                        <strong>Direito à Privacidade e Proteção de Dados:</strong> Nenhuma empresa pode vender ou compartilhar seus dados pessoais e número de telefone sem a sua permissão explícita.
+                    </li>
+                    <li>
+                        <strong>Direito ao Cancelamento de Compras:</strong> Em compras feitas pela internet ou telefone, você tem até <strong>7 dias</strong> para desistir e receber todo o seu dinheiro de volta.
+                    </li>
+                    <li>
+                        <strong>Direito à Informação Clara:</strong> Bancos e lojas virtuais devem explicar todos os custos, taxas e contratos em linguagem simples e fácil de entender.
+                    </li>
+                    <li>
+                        <strong>Direito ao Atendimento Humano:</strong> Se um robô ou sistema automático não resolver seu problema, você tem direito de ser atendido por uma pessoa de verdade.
+                    </li>
+                </ul>
+
+                <div class="bg-indigo-50 p-4 rounded-2xl border-2 border-indigo-300 mt-4">
+                    <p class="font-bold text-indigo-950">💡 Lembre-se:</p>
+                    <p>Seus direitos digitais são protegidos pelo Estatuto da Pessoa Idosa, pelo Código de Defesa do Consumidor e pela Lei Geral de Proteção de Dados (LGPD).</p>
+                </div>
+
+                <button onclick="lerTexto('Seus Direitos na Internet. Você tem direito à privacidade dos seus dados, direito de desistir de compras em até 7 dias, direito a informações claras sobre taxas e direito de ser atendido por uma pessoa de verdade quando precisar.')" class="bg-indigo-800 hover:bg-indigo-900 text-white font-bold py-3 px-6 rounded-xl text-lg flex items-center gap-2">
+                    🔊 Ouvir sobre Direitos
+                </button>
+            </div>
+        </section>
+
+        <!-- 4. SEÇÃO COMO SABER SE ESTOU CAINDO EM UM GOLPE: Atitudes suspeitas -->
+        <section id="sinais-golpe" class="card-bg bg-white p-6 sm:p-8 rounded-3xl shadow-lg border-2 border-red-200 space-y-6">
+            <div class="flex items-center gap-3 border-b-2 border-red-100 pb-4">
+                <span class="text-4xl">🚨</span>
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-red-900 accent-text">
+                        Como Saber se Estou Caindo em um Golpe?
+                    </h2>
+                    <p class="text-lg text-slate-600">Fique atento a estas 4 atitudes suspeitas</p>
+                </div>
+            </div>
+
+            <p class="text-lg sm:text-xl leading-relaxed">
+                Os golpistas costumam usar os mesmos truques. Se você notar qualquer uma das atitudes abaixo, <strong>desconfie imediatamente</strong>:
+            </p>
+
+            <div class="space-y-4">
+                <!-- Atitude 1 -->
+                <div class="card-bg bg-red-50 p-5 rounded-2xl border-l-8 border-red-600 flex items-start gap-4">
+                    <span class="text-3xl">⏳</span>
+                    <div>
+                        <h3 class="text-xl font-bold text-red-950 accent-text">1. Urgência Excessiva e Pressão</h3>
+                        <p class="text-lg mt-1">O golpista diz que você precisa pagar "agora mesmo", senão sua conta será bloqueada ou seu parente ficará em perigo. <strong>Pessoas honestas dão tempo para você pensar.</strong></p>
+                    </div>
+                </div>
+
+                <!-- Atitude 2 -->
+                <div class="card-bg bg-red-50 p-5 rounded-2xl border-l-8 border-red-600 flex items-start gap-4">
+                    <span class="text-3xl">📱</span>
+                    <div>
+                        <h3 class="text-xl font-bold text-red-950 accent-text">2. Pedidos de Dinheiro com Número Novo</h3>
+                        <p class="text-lg mt-1">Mensagens de texto ou WhatsApp dizendo: "Mudei de número, me faz um PIX rápido". Sempre ligue para o <strong>número antigo</strong> da pessoa para confirmar.</p>
+                    </div>
+                </div>
+
+                <!-- Atitude 3 -->
+                <div class="card-bg bg-red-50 p-5 rounded-2xl border-l-8 border-red-600 flex items-start gap-4">
+                    <span class="text-3xl">🔑</span>
+                    <div>
+                        <h3 class="text-xl font-bold text-red-950 accent-text">3. Solicitação de Senhas por Telefone</h3>
+                        <p class="text-lg mt-1">Ligações fingindo ser do banco pedindo senha, número do cartão ou código enviado por SMS. <strong>O banco jamais pede sua senha.</strong></p>
+                    </div>
+                </div>
+
+                <!-- Atitude 4 -->
+                <div class="card-bg bg-red-50 p-5 rounded-2xl border-l-8 border-red-600 flex items-start gap-4">
+                    <span class="text-3xl">🎁</span>
+                    <div>
+                        <h3 class="text-xl font-bold text-red-950 accent-text">4. Prêmios Inesperados ou Ofertas Irresistíveis</h3>
+                        <p class="text-lg mt-1">Mensagens dizendo que você ganhou um prêmio, herança ou desconto enorme, mas precisa pagar uma "taxa de liberação". Isso é golpe!</p>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="lerTexto('Como saber se está caindo em um golpe. Fique atento a urgência excessiva, pedidos de PIX com número novo, ligações pedindo senhas e prêmios fáceis que pedem pagamentos prévios.')" class="bg-red-800 hover:bg-red-900 text-white font-bold py-3 px-6 rounded-xl text-lg flex items-center gap-2">
+                🔊 Ouvir Alertas de Golpe
+            </button>
+        </section>
+
+        <!-- Botão de Emergência / Suporte -->
+        <section class="text-center">
+            <div class="card-bg bg-yellow-100 border-2 border-yellow-400 p-6 rounded-3xl space-y-3">
+                <h3 class="text-2xl font-bold text-yellow-950 accent-text">Precisa de Ajuda Imediata?</h3>
+                <p class="text-lg">Em caso de suspeita ou perda de dinheiro, avise familiares e contate as autoridades.</p>
+                <div class="flex flex-wrap justify-center gap-4 pt-2">
+                    <a href="tel:190" class="bg-red-700 hover:bg-red-800 text-white text-xl font-extrabold py-3 px-8 rounded-2xl shadow-lg inline-flex items-center gap-2 border-2 border-black">
+                        📞 Ligar para a Polícia (190)
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-slate-800 text-white text-center p-6 mt-8">
+        <p class="text-lg">Guia Digital Amigo &copy; Feito para garantir autonomia e proteção à terceira idade.</p>
+    </footer>
+
+    <!-- Lógica de Interatividade e Acessibilidade em JS -->
+    <script>
+        let escalaAtual = 1;
+
+        // Função do Botão no Banner de Início
+        function iniciarGuia() {
+            const secaoDicas = document.getElementById('dicas');
+            if (secaoDicas) {
+                secaoDicas.scrollIntoView({ behavior: 'smooth' });
+            }
+            lerTexto('Navegue pelas dicas importantes logo abaixo!');
+        }
+
+        // Função para Aumentar/Diminuir a fonte
+        function alterarFonte(delta) {
+            escalaAtual += delta;
+            if (escalaAtual < 0.8) escalaAtual = 0.8;
+            if (escalaAtual > 1.5) escalaAtual = 1.5;
+            document.documentElement.style.setProperty('--font-scale', escalaAtual);
+        }
+
+        // Modo de Alto Contraste
+        function alternarAltoContraste() {
+            document.body.classList.toggle('alto-contraste');
+        }
+
+        // Sintetizador de Voz (Text-to-Speech)
+        function lerTexto(texto) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const fala = new SpeechSynthesisUtterance(texto);
+                fala.lang = 'pt-BR';
+                fala.rate = 0.9;
+                window.speechSynthesis.speak(fala);
+            } else {
+                alert('A leitura em áudio não é suportada neste navegador.');
+            }
+        }
+    </script>
+</body>
+</html>
